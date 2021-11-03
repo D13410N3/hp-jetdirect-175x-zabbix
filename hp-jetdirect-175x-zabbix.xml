@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.4</version>
+    <date>2021-11-03T10:11:38Z</date>
+    <groups>
+        <group>
+            <name>Printers</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>HP JetDirect 175x Print Server by SNMP</template>
+            <name>HP JetDirect 175x Print Server by SNMP</name>
+            <templates>
+                <template>
+                    <name>Template Module ICMP Ping</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Printers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <name>Ethernet Administrative Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.7.1</snmp_oid>
+                    <key>ethernet.admin.status</key>
+                    <valuemap>
+                        <name>Operational Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>Ethernet IN Octets</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.10.1</snmp_oid>
+                    <key>ethernet.in.octets</key>
+                    <history>365d</history>
+                    <units>bytes</units>
+                </item>
+                <item>
+                    <name>Ethernet MAC Address</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.6.1</snmp_oid>
+                    <key>ethernet.mac</key>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>RTRIM</type>
+                            <parameters>
+                                <parameter><![CDATA[ ]]></parameter>
+                            </parameters>
+                        </step>
+                        <step>
+                            <type>STR_REPLACE</type>
+                            <parameters>
+                                <parameter><![CDATA[ ]]></parameter>
+                                <parameter>:</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Ethernet Operational Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.8.1</snmp_oid>
+                    <key>ethernet.oper.status</key>
+                    <valuemap>
+                        <name>Operational Status</name>
+                    </valuemap>
+                </item>
+                <item>
+                    <name>Ethernet OUT Octets</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.16.1</snmp_oid>
+                    <key>ethernet.out.octets</key>
+                    <units>bytes</units>
+                </item>
+                <item>
+                    <name>Ethernet Link Speed</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.2.2.1.5.1</snmp_oid>
+                    <key>interface.ethernet.speed</key>
+                    <history>365d</history>
+                    <units>bps</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>10</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <name>Printer Job Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.4.1.11.2.3.9.1.1.2.18.0</snmp_oid>
+                    <key>printer.job.status</key>
+                    <delay>15s</delay>
+                    <history>365d</history>
+                    <description>Check whether device is printing now or not</description>
+                </item>
+                <item>
+                    <name>Printer Model (full string)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.4.1.11.2.3.9.1.1.7.0</snmp_oid>
+                    <key>printer.model.full</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Returns full string including information about printer model, protocols, parameters, etc.</description>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}=0</expression>
+                            <name>No printer connected</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Printer Model (short)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.4.1.11.2.3.9.1.1.19.0</snmp_oid>
+                    <key>printer.model.short</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Returns short name of the printer (as seen in top of web-admin)</description>
+                </item>
+                <item>
+                    <name>System Contact</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.1.4.0</snmp_oid>
+                    <key>system.contact</key>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>System Hostname</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.1.5.0</snmp_oid>
+                    <key>system.hostname</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>System Hostname</description>
+                </item>
+                <item>
+                    <name>System Location</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.1.6.0</snmp_oid>
+                    <key>system.location</key>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>System Web MGMT URL</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.4.1.11.2.36.1.1.1.1.0</snmp_oid>
+                    <key>system.mgmt.url</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                </item>
+                <item>
+                    <name>System ROM Version</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.1.1.0</snmp_oid>
+                    <key>system.rom.version</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>System ROM Version</description>
+                </item>
+                <item>
+                    <name>System Uptime</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.2.1.1.3.0</snmp_oid>
+                    <key>system.uptime</key>
+                    <history>365d</history>
+                    <units>uptime</units>
+                    <description>Time since last rebbot (in seconds)</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+            </items>
+            <valuemaps>
+                <valuemap>
+                    <name>Operational Status</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>up</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <name>Ethernet Link Status</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>ethernet.admin.status</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>F63100</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>ethernet.oper.status</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ICMP loss</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>icmppingloss</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ICMP ping</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>icmpping</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ICMP response time</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>icmppingsec</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Printer Job Status</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>printer.job.status</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>System Uptime</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>1A7C11</color>
+                    <item>
+                        <host>HP JetDirect 175x Print Server by SNMP</host>
+                        <key>system.uptime</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
