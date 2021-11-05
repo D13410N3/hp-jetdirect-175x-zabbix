@@ -25,6 +25,7 @@ Zabbix template for print-server HP JetDirect 175x. Maybe it will work for any o
 - No printer connected (printer.model.full.strlen() < 3)
 - Default ICMP triggers (loss, time, unavailable)
 - PrintServer was restarted (uptime < 10m)
+- ROM version has changed
 
 # Graphs
 - Printer Job
