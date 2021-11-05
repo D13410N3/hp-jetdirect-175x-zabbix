@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.4</version>
-    <date>2021-11-03T10:11:38Z</date>
+    <date>2021-11-05T14:00:17Z</date>
     <groups>
         <group>
             <name>Printers</name>
@@ -114,7 +114,7 @@
                     <description>Returns full string including information about printer model, protocols, parameters, etc.</description>
                     <triggers>
                         <trigger>
-                            <expression>{last()}=0</expression>
+                            <expression>{strlen()}&lt;3</expression>
                             <name>No printer connected</name>
                             <priority>INFO</priority>
                         </trigger>
@@ -191,6 +191,13 @@
                             </parameters>
                         </step>
                     </preprocessing>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;10m</expression>
+                            <name>HP JetDriect 175x was restarted (uptime &lt; 10m)</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
                 </item>
             </items>
             <valuemaps>
