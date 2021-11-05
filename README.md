@@ -1,5 +1,5 @@
 # hp-jetdirect-175x-zabbix
-Zabbix pattern for print-server HP JetDirect 175x. Maybe it will work for any other print-servers, idk.
+Zabbix template for print-server HP JetDirect 175x. Maybe it will work for any other print-servers, idk.
 
 # Items (and some example)
 - ethernet.admin.status
