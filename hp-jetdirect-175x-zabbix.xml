@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.4</version>
-    <date>2021-11-05T19:00:26Z</date>
+    <date>2021-11-22T21:10:50Z</date>
     <groups>
         <group>
             <name>Printers</name>
@@ -129,6 +129,15 @@
                     <trends>0</trends>
                     <value_type>TEXT</value_type>
                     <description>Returns short name of the printer (as seen in top of web-admin)</description>
+                </item>
+                <item>
+                    <name>Printer Vendor</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>iso.3.6.1.4.1.11.2.4.3.13.15.0</snmp_oid>
+                    <key>printer.vendor</key>
+                    <history>365d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
                 </item>
                 <item>
                     <name>System Contact</name>
